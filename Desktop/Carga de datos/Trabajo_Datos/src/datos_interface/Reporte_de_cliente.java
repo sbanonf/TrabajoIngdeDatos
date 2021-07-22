@@ -242,9 +242,12 @@ public class Reporte_de_cliente extends javax.swing.JFrame {
                     String sql2= "SELECT PC.COD_PEDIDO, PC.FECHA, p.precio_unitario FROM PEDIDO_CLIENTE PC, CLIENTE C, PUEDE_SER_COMERCIAL PSC, PRODUCTO P WHERE C.DNI =" + dni +" AND PSC.COD_PRODUCTO = p.cod_producto AND PSC.COD_PEDIDO= PC.COD_PEDIDO";
                     PreparedStatement pst2=conn2.prepareStatement(sql2);
                     ResultSet rs2=pst2.executeQuery();
+                    boolean resultado2=false;
                     while(rs2.next()){
+                        resultado2=true;
                         String[] columna = new String[3];
                         columna[0]= String.valueOf(rs2.getString("COD_PEDIDO"));
+                        System.out.println(columna[0]);
                         columna[1]= rs2.getString("FECHA");
                         columna[2]= rs2.getString("PRECIO_UNITARIO");
                         this.totalpedido=this.totalpedido+rs2.getInt("PRECIO_UNITARIO");
@@ -253,6 +256,27 @@ public class Reporte_de_cliente extends javax.swing.JFrame {
                     rs2.close();
                     pst2.close();
                     conn2.close();
+                    System.out.println(resultado2);
+                    if(resultado2==false){
+                        System.out.println("Entre");
+                        Connection conn3 = DriverManager.getConnection(url,usuario,password);
+                        String sql3="SELECT PC.COD_PEDIDO, PC.FECHA, p.precio_unitario FROM PEDIDO_CLIENTE PC, CLIENTE C,PUEDE_SER_PERSONALIZADO PSP, PRODUCTO P WHERE C.DNI = "+dni+" AND PSP.COD_PRODUCTO= p.cod_producto AND PSP.COD_PEDIDO=PC.COD_PEDIDO";
+                        PreparedStatement pst3=conn3.prepareStatement(sql3);
+                        ResultSet rs3=pst3.executeQuery();
+                        while(rs3.next()){
+                        
+                            String[] columna = new String[3];
+                            columna[0]= String.valueOf(rs3.getString("COD_PEDIDO"));
+                            columna[1]= rs3.getString("FECHA");
+                            columna[2]= rs3.getString("PRECIO_UNITARIO");
+                            this.totalpedido=this.totalpedido+rs3.getInt("PRECIO_UNITARIO");
+                            modelo.addRow(columna);
+                        
+                        }
+                        rs3.close();
+                        pst3.close();
+                        conn3.close();
+                    }
                     this.jTableResumencompras.setModel(modelo);
                     this.jTextFieldSumatotped.setText(String.valueOf(this.totalpedido));
                     this.jTextFieldNomcliente.setText("");

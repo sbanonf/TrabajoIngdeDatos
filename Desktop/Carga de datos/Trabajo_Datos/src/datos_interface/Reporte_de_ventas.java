@@ -8,11 +8,13 @@ package datos_interface;
 import static datos_interface.CLIENTE.password;
 import static datos_interface.CLIENTE.url;
 import static datos_interface.CLIENTE.usuario;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -260,34 +262,45 @@ public class Reporte_de_ventas extends javax.swing.JFrame {
              
             try {
                Connection conn = DriverManager.getConnection(url, usuario, password);
-               String sql = "SELECT COUNT(*) FROM PEDIDO_CLIENTE WHERE (SELECT EXTRACT (MONTH FROM FECHA) FROM PEDIDO_CLIENTE) = "+mesnum;
-               PreparedStatement pst = conn.prepareStatement(sql);
-               ResultSet rs = pst.executeQuery();
-               boolean resultado = false;
-               while(rs.next()){
-               resultado=true;
-                this.jTextFieldVentames1.setText(rs.getString("COUNT(*)"));
-               }
-               rs.close();
-               pst.close();
+               String llamado = "{CALL ? := VENTAS(?)}";
+               CallableStatement cst = conn.prepareCall(llamado);
+               cst.setInt(2, mesnum);
+               cst.registerOutParameter(1, Types.INTEGER);
+               cst.execute();
+               int rpt1=cst.getInt(1);
+               String respuesta1= String.valueOf(rpt1);
+               this.jTextFieldVentames1.setText(respuesta1);                            
+               cst.close();
                conn.close();
                 try {
                Connection conn2 = DriverManager.getConnection(url, usuario, password);
-               String sql2 = "SELECT SUM(CANTIDAD) FROM  (SELECT P.PRECIO_UNITARIO AS CANTIDAD FROM PRODUCTO P, PUEDE_SER_COMERCIAL PSC, PEDIDO_CLIENTE PC WHERE p.cod_producto=psc.cod_producto and psc.cod_pedido = pc.cod_pedido "
-                       + "AND (SELECT EXTRACT (MONTH FROM FECHA) FROM PEDIDO_CLIENTE) = "+mesnum+")";
-               PreparedStatement pst2 = conn2.prepareStatement(sql2);
-               ResultSet rs2 = pst2.executeQuery();
-               boolean resultado2 = false;
-               while(rs2.next()){
-               resultado2=true;
-                this.jTextFieldMontogop.setText(rs2.getString("SUM(CANTIDAD)"));
-                if(rs2.getString("SUM(CANTIDAD)")== null){
-                this.jTextFieldMontogop.setText("0");
-                }
+               String llamado2 = "{CALL ? := SUM_CANTIDAD(?)}";
+               CallableStatement cst2 = conn2.prepareCall(llamado2);
+               cst2.setInt(2, mesnum);
+               cst2.registerOutParameter(1, Types.INTEGER);
+               cst2.execute();
+               int rpt= cst2.getInt(1);
+               if(rpt == 0){
+                        Connection conn3 = DriverManager.getConnection(url, usuario, password);
+                        String llamado3 = "{CALL ? := SUM_CANTIDAD2(?)}";
+                        CallableStatement cst3 = conn3.prepareCall(llamado3);
+                        cst3.setInt(2, mesnum);
+                        cst3.registerOutParameter(1, Types.INTEGER);
+                        cst3.execute();
+                        int rpt2= cst3.getInt(1);
+                        String respuesta = String.valueOf(rpt2);
+                        this.jTextFieldMontogop.setText(respuesta);
+                        cst3.close();
+                        conn3.close();
+               }else{
+                  String respuesta = String.valueOf(rpt);
+                  this.jTextFieldMontogop.setText(respuesta);
+
+                             
                }
-               rs2.close();
-               pst2.close();
-               conn2.close();
+               cst2.close();
+               conn2.close();              
+               
            } catch (SQLException ex) {
                Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
                JOptionPane.showMessageDialog(null,"Ocurrio un error intentelo mas tarde");

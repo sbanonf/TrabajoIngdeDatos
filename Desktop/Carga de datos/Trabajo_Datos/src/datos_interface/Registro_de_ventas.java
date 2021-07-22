@@ -44,6 +44,7 @@ public class Registro_de_ventas extends javax.swing.JFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Linea");
         modelo.addColumn("Precio_Unitario");
+        modelo.addColumn("Modelo");
         this.jTable2.setModel(modelo);
     }
     public Registro_de_ventas(DefaultTableModel modelo, int tp){
@@ -95,7 +96,6 @@ public class Registro_de_ventas extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -242,22 +242,13 @@ public class Registro_de_ventas extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        jButton7.setBackground(new java.awt.Color(153, 204, 255));
-        jButton7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton7.setText("ELIMINAR");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -267,7 +258,6 @@ public class Registro_de_ventas extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(67, 67, 67)
@@ -279,22 +269,17 @@ public class Registro_de_ventas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldDni, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton7)
-                        .addGap(44, 44, 44))))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2))
+                .addGap(66, 66, 66)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,16 +295,14 @@ public class Registro_de_ventas extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(jButton7))
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -341,7 +324,9 @@ public class Registro_de_ventas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,19 +377,35 @@ public class Registro_de_ventas extends javax.swing.JFrame {
                     try {
                          Connection conn2 = DriverManager.getConnection(url, usuario, password);
                          for (int i=0; i<this.jTable2.getRowCount();i++){
-                            int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
-                            String cod_comercial= "C1";
-                            String sql2 = "INSERT INTO PUEDE_SER_COMERCIAL VALUES(?, ?, ?,?)";
-                            PreparedStatement pst2 = conn2.prepareStatement(sql2);
-                            pst2.setInt(1,pedido.getCOD_PEDIDO());
-                            pst2.setInt(2,cod_prod);
-                            pst2.setString(3,cod_comercial);
-                            pst2.setInt(4,1);
-                            pst2.executeUpdate();
-                            pst2.close();
-                            conn2.close();
+                            if(this.jTable2.getModel().getValueAt(i, 4).toString().equalsIgnoreCase("Personalizado")==false){
+                                int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
+                                String cod_comercial= "C1";
+                                String sql2 = "INSERT INTO PUEDE_SER_COMERCIAL VALUES(?, ?, ?,?)";
+                                PreparedStatement pst2 = conn2.prepareStatement(sql2);
+                                pst2.setInt(1,pedido.getCOD_PEDIDO());
+                                pst2.setInt(2,cod_prod);
+                                pst2.setString(3,cod_comercial);
+                                pst2.setInt(4,1);
+                                pst2.executeUpdate();
+                                pst2.close();
+                                conn2.close();
+                            }
+                            else{
+                                int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
+                                String cod_personalizado="P1";
+                                String sql2 = "INSERT INTO PUEDE_SER_PERSONALIZADO VALUES(?, ?, ?,?)";
+                                PreparedStatement pst2 = conn2.prepareStatement(sql2);
+                                pst2.setInt(1,pedido.getCOD_PEDIDO());
+                                pst2.setInt(2,cod_prod);
+                                pst2.setString(3,cod_personalizado);
+                                pst2.setInt(4,1);
+                                pst2.executeUpdate();
+                                pst2.close();
+                                conn2.close();
+                                System.out.println("Creado Puede_seR_PERSONALZIADO");
+                               }
                          }
-                         System.out.println("Creado Puede_seR_COMERCIAL");
+                         
                         } catch (SQLException ex) {
                             Logger.getLogger(Registro_de_ventas.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -431,19 +432,34 @@ public class Registro_de_ventas extends javax.swing.JFrame {
                     try {
                          Connection conn2 = DriverManager.getConnection(url, usuario, password);
                          for (int i=0; i<this.jTable2.getRowCount();i++){
-                            int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
-                            String cod_comercial= "C1";
-                            String sql2 = "INSERT INTO PUEDE_SER_COMERCIAL VALUES(?, ?, ?,?)";
-                            PreparedStatement pst2 = conn2.prepareStatement(sql2);
-                            pst2.setInt(1,pedido.getCOD_PEDIDO());
-                            pst2.setInt(2,cod_prod);
-                            pst2.setString(3,cod_comercial);
-                            pst2.setInt(4,1);
-                            pst2.executeUpdate();
-                            pst2.close();
-                            conn2.close();
+                            if(this.jTable2.getModel().getValueAt(i, 4).toString().equalsIgnoreCase("Personalizado")==false){
+                                int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
+                                String cod_comercial= "C1";
+                                String sql2 = "INSERT INTO PUEDE_SER_COMERCIAL VALUES(?, ?, ?,?)";
+                                PreparedStatement pst2 = conn2.prepareStatement(sql2);
+                                pst2.setInt(1,pedido.getCOD_PEDIDO());
+                                pst2.setInt(2,cod_prod);
+                                pst2.setString(3,cod_comercial);
+                                pst2.setInt(4,1);
+                                pst2.executeUpdate();
+                                pst2.close();
+                                conn2.close();
+                            }
+                            else{
+                                int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
+                                String cod_personalizado="P1";
+                                String sql2 = "INSERT INTO PUEDE_SER_PERSONALIZADO VALUES(?, ?, ?,?)";
+                                PreparedStatement pst2 = conn2.prepareStatement(sql2);
+                                pst2.setInt(1,pedido.getCOD_PEDIDO());
+                                pst2.setInt(2,cod_prod);
+                                pst2.setString(3,cod_personalizado);
+                                pst2.setInt(4,1);
+                                pst2.executeUpdate();
+                                pst2.close();
+                                conn2.close();
+                                System.out.println("Creado Puede_seR_PERSONALZIADO");
+                               }
                          }
-                         System.out.println("Creado Puede_seR_COMERCIAL");
                         } catch (SQLException ex) {
                             Logger.getLogger(Registro_de_ventas.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -469,19 +485,34 @@ public class Registro_de_ventas extends javax.swing.JFrame {
                     try {
                          Connection conn2 = DriverManager.getConnection(url, usuario, password);
                          for (int i=0; i<this.jTable2.getRowCount();i++){
-                            int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
-                            String cod_comercial= "C1";
-                            String sql2 = "INSERT INTO PUEDE_SER_COMERCIAL VALUES(?, ?, ?,?)";
-                            PreparedStatement pst2 = conn2.prepareStatement(sql2);
-                            pst2.setInt(1,pedido.getCOD_PEDIDO());
-                            pst2.setInt(2,cod_prod);
-                            pst2.setString(3,cod_comercial);
-                            pst2.setInt(4,1);
-                            pst2.executeUpdate();
-                            pst2.close();
-                            conn2.close();
+                            if(this.jTable2.getModel().getValueAt(i, 4).toString().equalsIgnoreCase("Personalizado")==false){
+                                int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
+                                String cod_comercial= "C1";
+                                String sql2 = "INSERT INTO PUEDE_SER_COMERCIAL VALUES(?, ?, ?,?)";
+                                PreparedStatement pst2 = conn2.prepareStatement(sql2);
+                                pst2.setInt(1,pedido.getCOD_PEDIDO());
+                                pst2.setInt(2,cod_prod);
+                                pst2.setString(3,cod_comercial);
+                                pst2.setInt(4,1);
+                                pst2.executeUpdate();
+                                pst2.close();
+                                conn2.close();
+                            }
+                            else{
+                                int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
+                                String cod_personalizado="P1";
+                                String sql2 = "INSERT INTO PUEDE_SER_PERSONALIZADO VALUES(?, ?, ?,?)";
+                                PreparedStatement pst2 = conn2.prepareStatement(sql2);
+                                pst2.setInt(1,pedido.getCOD_PEDIDO());
+                                pst2.setInt(2,cod_prod);
+                                pst2.setString(3,cod_personalizado);
+                                pst2.setInt(4,1);
+                                pst2.executeUpdate();
+                                pst2.close();
+                                conn2.close();
+                                System.out.println("Creado Puede_seR_PERSONALZIADO");
+                               }
                          }
-                         System.out.println("Creado Puede_seR_COMERCIAL");
                         } catch (SQLException ex) {
                             Logger.getLogger(Registro_de_ventas.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -507,19 +538,34 @@ public class Registro_de_ventas extends javax.swing.JFrame {
                     try {
                          Connection conn2 = DriverManager.getConnection(url, usuario, password);
                          for (int i=0; i<this.jTable2.getRowCount();i++){
-                            int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
-                            String cod_comercial= "C1";
-                            String sql2 = "INSERT INTO PUEDE_SER_COMERCIAL VALUES(?, ?, ?,?)";
-                            PreparedStatement pst2 = conn2.prepareStatement(sql2);
-                            pst2.setInt(1,pedido.getCOD_PEDIDO());
-                            pst2.setInt(2,cod_prod);
-                            pst2.setString(3,cod_comercial);
-                            pst2.setInt(4,1);
-                            pst2.executeUpdate();
-                            pst2.close();
-                            conn2.close();
+                            if(this.jTable2.getModel().getValueAt(i, 4).toString().equalsIgnoreCase("Personalizado")==false){
+                                int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
+                                String cod_comercial= "C1";
+                                String sql2 = "INSERT INTO PUEDE_SER_COMERCIAL VALUES(?, ?, ?,?)";
+                                PreparedStatement pst2 = conn2.prepareStatement(sql2);
+                                pst2.setInt(1,pedido.getCOD_PEDIDO());
+                                pst2.setInt(2,cod_prod);
+                                pst2.setString(3,cod_comercial);
+                                pst2.setInt(4,1);
+                                pst2.executeUpdate();
+                                pst2.close();
+                                conn2.close();
+                            }
+                            else{
+                                int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(i,0 ).toString());
+                                String cod_personalizado="P1";
+                                String sql2 = "INSERT INTO PUEDE_SER_PERSONALIZADO VALUES(?, ?, ?,?)";
+                                PreparedStatement pst2 = conn2.prepareStatement(sql2);
+                                pst2.setInt(1,pedido.getCOD_PEDIDO());
+                                pst2.setInt(2,cod_prod);
+                                pst2.setString(3,cod_personalizado);
+                                pst2.setInt(4,1);
+                                pst2.executeUpdate();
+                                pst2.close();
+                                conn2.close();
+                                System.out.println("Creado Puede_seR_PERSONALZIADO");
+                               }
                          }
-                         System.out.println("Creado Puede_seR_COMERCIAL");
                         } catch (SQLException ex) {
                             Logger.getLogger(Registro_de_ventas.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -592,11 +638,6 @@ public class Registro_de_ventas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       int cod_prod = Integer.parseInt(this.jTable2.getModel().getValueAt(0, 0).toString());
-       System.out.println(cod_prod);
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -640,7 +681,6 @@ public class Registro_de_ventas extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
